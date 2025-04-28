@@ -8,6 +8,10 @@
 #include <commdlg.h>
 #include <commctrl.h>
 #include <windowsx.h>
+#include <iostream>
+#include <locale>
+#include <codecvt>
+#include <string>
 
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(linker, "\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
@@ -53,6 +57,10 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+string convertWstring(const wstring& WideString) {
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    return converter.to_bytes(WideString);
+}
 
 string calculateLetterGrade(double avg) {
     if (avg > 90) {
@@ -148,7 +156,7 @@ void InitListView(HWND hWnd) {
 bool LoadStudentsFromFile(const wstring& filename) {
     students.clear();
 
-    string filenameStr(filename.begin(), filename.end());
+    string filenameStr = convertWstring(filename);
 
    ifstream file(filenameStr + ".txt");
     if (!file.is_open()) {
@@ -270,7 +278,7 @@ void PopulateListView() {
 }
 
 bool ExportResultsToFile(const wstring& filename) {
-    string filenameStr(filename.begin(), filename.end());
+    string filenameStr = convertWstring(filename);
 
     ofstream file(filenameStr);
     if (!file.is_open()) {
@@ -305,18 +313,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // Initialize common controls
     INITCOMMONCONTROLSEX icex;
     icex.dwSize = sizeof(INITCOMMONCONTROLSEX);
     icex.dwICC = ICC_LISTVIEW_CLASSES | ICC_BAR_CLASSES;
     InitCommonControlsEx(&icex);
 
-    // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_GRADECALCULATOR, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    // Perform application initialization:
     if (!InitInstance(hInstance, nCmdShow))
     {
         return FALSE;
@@ -326,7 +331,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // Main message loop:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -384,9 +388,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        CreateWindowEx(0, L"STATIC", L"Enter file name (without extension):",
+        CreateWindowEx(0, L"STATIC", L"Enter file name without extension:",
             WS_CHILD | WS_VISIBLE,
-            10, 10, 220, 20, hWnd, NULL, hInst, NULL);
+            10, 10, 230, 20, hWnd, NULL, hInst, NULL);
 
         hWndEditFilename = CreateWindowEx(
             WS_EX_CLIENTEDGE, L"EDIT", L"",
@@ -450,7 +454,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 SetWindowText(hWndStatus, statusText);
             }
             else {
-                MessageBox(hWnd, L"Failed to load file. Please check the filename and try again.",
+                MessageBox(hWnd, (L"Failed to find that file ") ,
                     L"File Error", MB_ICONERROR | MB_OK);
             }
         }
@@ -458,11 +462,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         case ID_BUTTON_EXPORT:
         {
-            if (students.empty()) {
+            /*if (students.empty()) {
                 MessageBox(hWnd, L"No data to export. Please load student data first.",
                     L"Warning", MB_ICONWARNING | MB_OK);
                 break;
-            }
+            }*/
 
             OPENFILENAME ofn;
             wchar_t szFileName[MAX_PATH] = L"GradeResults.txt";
