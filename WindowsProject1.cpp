@@ -145,7 +145,7 @@ void InitListView(HWND hWnd) {
     }
 }
 
-bool LoadStudentsFromFile(const std::wstring& filename) {
+bool LoadStudentsFromFile(const wstring& filename) {
     students.clear();
 
     string filenameStr(filename.begin(), filename.end());
@@ -170,7 +170,7 @@ bool LoadStudentsFromFile(const std::wstring& filename) {
         getline(file, line);
         student.attendance = stod(line);
 
-        std::getline(file, line);
+        getline(file, line);
         student.groupWork = stod(line);
 
         
@@ -269,7 +269,7 @@ void PopulateListView() {
     }
 }
 
-bool ExportResultsToFile(const std::wstring& filename) {
+bool ExportResultsToFile(const wstring& filename) {
     string filenameStr(filename.begin(), filename.end());
 
     ofstream file(filenameStr);
@@ -277,21 +277,20 @@ bool ExportResultsToFile(const std::wstring& filename) {
         return false;
     }
 
-    file << "Student Grade Results" << std::endl;
-    file << "====================" << std::endl << std::endl;
+    file << "Student Grade Results" << endl;
+    file << "====================" << endl << endl;
 
     for (const auto& student : students) {
-        file << "Name: " << student.firstName << " " << student.lastName << std::endl;
-        file << "Attendance: " << std::fixed << std::setprecision(2) << student.attendance << std::endl;
-        file << "Group Work: " << student.groupWork << std::endl;
-        file << "Quiz Average: " << student.avgQuizzes << std::endl;
-        file << "Lab Average: " << student.avgLabs << std::endl;
-        file << "Homework Average: " << student.avgHomework << std::endl;
-        file << "Midterm: " << student.midterm << std::endl;
-        file << "Final Exam: " << student.finalExam << std::endl;
-        file << "Course Average: " << student.courseAverage << std::endl;
-        file << "Letter Grade: " << student.letterGrade << std::endl;
-        file << "--------------------------------------------------" << std::endl << std::endl;
+        file << "Name: " << student.firstName << " " << student.lastName << endl;
+        file << "Attendance: " << fixed << setprecision(2) << student.attendance << endl;
+        file << "Group Work: " << student.groupWork << endl;
+        file << "Quiz Average: " << student.avgQuizzes << endl;
+        file << "Homework Average: " << student.avgHomework << endl;
+        file << "Midterm: " << student.midterm << endl;
+        file << "Final Exam: " << student.finalExam << endl;
+        file << "Course Average: " << student.courseAverage << endl;
+        file << "Letter Grade: " << student.letterGrade << endl;
+        file << "--------------------------------------------------" << endl << endl;
     }
 
     file.close();
