@@ -1,0 +1,123 @@
+Student Grade Results
+====================
+
+Name: Robert Chen
+Attendance: 98.00
+Group Work: 65.00
+Quiz Average: 85.33
+Lab Average: 84.12
+Homework Average: 58.50
+Midterm: 91.00
+Final Exam: 76.00
+Course Average: 77.03
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Sophia Williams
+Attendance: 72.00
+Group Work: 94.00
+Quiz Average: 77.67
+Lab Average: 80.75
+Homework Average: 59.62
+Midterm: 72.00
+Final Exam: 91.00
+Course Average: 78.12
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Jamal Thompson
+Attendance: 85.00
+Group Work: 90.00
+Quiz Average: 79.33
+Lab Average: 80.12
+Homework Average: 58.00
+Midterm: 65.00
+Final Exam: 80.00
+Course Average: 75.28
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Maria Garcia
+Attendance: 100.00
+Group Work: 87.00
+Quiz Average: 90.00
+Lab Average: 82.75
+Homework Average: 64.00
+Midterm: 87.00
+Final Exam: 93.00
+Course Average: 83.85
+Letter Grade: B
+--------------------------------------------------
+
+Name: David Patel
+Attendance: 63.00
+Group Work: 74.00
+Quiz Average: 84.67
+Lab Average: 81.75
+Homework Average: 58.38
+Midterm: 62.00
+Final Exam: 88.00
+Course Average: 75.08
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Aisha Khan
+Attendance: 87.00
+Group Work: 95.00
+Quiz Average: 84.33
+Lab Average: 83.88
+Homework Average: 60.00
+Midterm: 91.00
+Final Exam: 75.00
+Course Average: 79.38
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Tyler Wilson
+Attendance: 75.00
+Group Work: 69.00
+Quiz Average: 83.33
+Lab Average: 79.88
+Homework Average: 64.25
+Midterm: 65.00
+Final Exam: 84.00
+Course Average: 75.28
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Olivia Martinez
+Attendance: 94.00
+Group Work: 82.00
+Quiz Average: 84.33
+Lab Average: 81.12
+Homework Average: 59.12
+Midterm: 88.00
+Final Exam: 96.00
+Course Average: 81.60
+Letter Grade: B
+--------------------------------------------------
+
+Name: Samuel Johnson
+Attendance: 68.00
+Group Work: 93.00
+Quiz Average: 84.00
+Lab Average: 80.75
+Homework Average: 64.88
+Midterm: 63.00
+Final Exam: 76.00
+Course Average: 75.93
+Letter Grade: C+
+--------------------------------------------------
+
+Name: Zoe Washington
+Attendance: 89.00
+Group Work: 72.00
+Quiz Average: 91.67
+Lab Average: 82.00
+Homework Average: 59.88
+Midterm: 84.00
+Final Exam: 70.00
+Course Average: 76.17
+Letter Grade: C+
+--------------------------------------------------
+
